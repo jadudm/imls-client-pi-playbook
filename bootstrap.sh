@@ -23,6 +23,7 @@
 # CRITICAL GLOBALS
 REPOS_ROOT="https://github.com/jadudm"
 PLAYBOOK_REPOS="imls-client-pi-playbook"
+PLAYBOOK_BRANCH="session-counter-bump"
 PLAYBOOK_URL="${REPOS_ROOT}/${PLAYBOOK_REPOS}"
 PLAYBOOK_WORKING_DIR="/opt/imls"
 INITIAL_CONFIGURATION_BINARY_URL="https://github.com/jadudm/input-initial-configuration/releases/download/v0.0.3/input-initial-configuration"
@@ -224,7 +225,8 @@ ansible_pull_playbook () {
     pushd $PLAYBOOK_WORKING_DIR
         _status "Cloning the playbook: ${PLAYBOOK_URL}"
         # 20210427 MCJ Adding a shallow clone.
-        git clone --depth=1 $PLAYBOOK_URL
+        git clone --depth 1 ${PLAYBOOK_URL} -b ${PLAYBOOK_BRANCH}
+
         pushd $PLAYBOOK_REPOS
             _status "Running the playbook. This will take a while."
             # For testing/dev purposes, we might not want to lock things down
