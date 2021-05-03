@@ -160,6 +160,7 @@ check_for_usb_wifi () {
         rm -f find-ralink
         curl -L -s -o find-ralink ${RALNK_BINARY}
         chmod 755 find-ralink
+        echo "$(sudo ./find-ralink --exists)"
 
         if [[ "$(sudo ./find-ralink --exists)" =~ "false" ]]; then
             restore_console
