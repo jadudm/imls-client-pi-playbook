@@ -23,7 +23,10 @@ umbrella:
   logging: /TEST/10x-imls/v1/events/
 wireshark:
   path: /usr/bin/tshark
-  adapter: wlan1
+  # 20210503 MCJ 
+  # We now check for the wlan adapter every `check_wlan` minutes.
+  # Should no longer be hardcoded or config'd.
+  # adapter: wlan1
   # How long to go between wlan checks (minutes)
   check_wlan: 3
   # duration is the number of seconds that wireshark

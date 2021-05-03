@@ -7,7 +7,10 @@
     - packages
     - unattended-upgrades
     - session-counter
-    - configure-monitor-mode
+    # 20210503 MCJ 
+    # Should no longer be needed; session-counter does a search
+    # for the hardware at runtime, every three minutes.
+    # - configure-monitor-mode
     # There are some mmap_rnd_bits errors being thrown that we want to ignore.
     - { role: lockdown, ignore_errors: yes, when: lockdown is defined  }
     # 20210429 MCJ
