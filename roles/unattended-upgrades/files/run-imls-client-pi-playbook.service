@@ -6,4 +6,6 @@ WorkingDirectory=/opt/imls/imls-client-pi-playbook
 ExecStart=sh -c "git pull origin main"
 ExecStart=sh -c "ansible-galaxy collection install devsec.hardening"
 ExecStart=sh -c 'ansible-playbook -i inventory.yaml playbook.yaml --extra-vars "lockdown=yes"'
+ExecStart=sh -c '/usr/local/bin/log-event --tag "playbook finished" --info "{}"'
+
 Type=oneshot
